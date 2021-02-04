@@ -16,6 +16,9 @@ if (isset($_SESSION['loggedin'])) {
     if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
         redirect_to('index.php');
     }
+
+    $_SESSION['error'] = "";
+
 // Processing form data when form is submitted
     if (isset($_POST['login'])) {
 

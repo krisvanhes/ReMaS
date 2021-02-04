@@ -26,7 +26,7 @@ if (!isset($_SESSION['loggedin']) && (strpos($page, 'login') === false)) {
     <div class="right">
         <?php
         if (isset($_SESSION['error'])) {
-            echo $_SESSION['error'];
+            echo "<span class='error-message'>{$_SESSION['error']}</span>";
         }
 
         if (!isset($_SESSION['loggedin'])) { ?>
@@ -68,8 +68,26 @@ if (!isset($_SESSION['loggedin']) && (strpos($page, 'login') === false)) {
                 <?php if ($role == 2 || $role == 5) { ?><a class="link" href="inname.php">Inname</a><?php } ?>
                 <?php if ($role == 3 || $role == 5) { ?><a class="link" href="verwerking.php">Verwerking</a><?php } ?>
                 <?php if ($role == 4 || $role == 5) { ?><a class="link" href="uitgifte.php">Uitgifte</a><?php } ?>
-                <?php if ($role != 6) { ?>              <a class="link" href="rapportage.php">Rapportage</a><?php } ?>
-                <?php if ($role == 5 || $role == 6) { ?><a class="link" href="onderhoud.php">Onderhoud</a><?php } ?>
+                <?php if ($role != 6) { ?>
+                    <div class="report-menu">
+                        <a class="link" id="report-menu">Rapportage</a>
+                        <a class="link link-2 depth-link" href="rapportage-inkoop.php">Inkoop</a>
+                        <a class="link link-2 depth-link" href="rapportage-werkvoorraad.php">Werkvoorraad</a>
+                        <a class="link link-2 depth-link" href="rapportage-verkoop.php">Verkoop</a>
+                        <a class="link link-2 depth-link" href="rapportage-rendement.php">Rendement</a>
+                    </div>
+                <?php } ?>
+                <?php if ($role == 5 || $role == 6) { ?>
+                    <div class="maintenance-menu">
+                        <a class="link" id="maintenance-menu">Onderhoud</a>
+                        <a class="link link-2 depth-link" href="onderhoud-medewerkers.php">Medewerkers</a>
+                        <?php if ($role === 6) { ?><a class="link link-3 depth-link" href="onderhoud-gebruikers.php">Gebruikers</a><?php } ?>
+                        <a class="link link-3 depth-link" href="onderhoud-rollen.php">Rollen</a>
+                        <a class="link link-2 depth-link" href="onderhoud-apparaten.php">Apparaten</a>
+                        <a class="link link-2 depth-link" href="onderhoud-onderdelen.php">Onderdelen</a>
+                        <a class="link link-2 depth-link" href="onderhoud-innames.php">Innames</a>
+                    </div>
+                <?php } ?>
             </ul>
         </nav>
     <?php } ?>
