@@ -43,9 +43,8 @@ function openMaintenanceMenu() {
 
 let maintenanceMenu = document.getElementById('maintenance-menu');
 
-if (maintenanceMenu) {
-    maintenanceMenu.addEventListener("click", openMaintenanceMenu);
-}
+maintenanceMenu ? maintenanceMenu.addEventListener("click", openMaintenanceMenu) : "";
+
 
 function openReportMenu() {
     let links = document.querySelectorAll('.report-menu .depth-link');
@@ -68,7 +67,19 @@ function openReportMenu() {
 
 let reportMenu = document.getElementById('report-menu');
 
-if (reportMenu) {
-    reportMenu.addEventListener("click", openReportMenu);
+reportMenu ? reportMenu.addEventListener("click", openReportMenu) : "";
+
+function addComponent() {
+    let component = document.getElementById('newComponent');
+    let input = document.createElement('input');
+
+    input.name = "device_ID[" + columns.length + "]";
+    input.value = id;
+    input.type = 'hidden';
+
+    component.appendChild(input);
+
+    console.log(component.selected);
 }
 
+document.getElementById('outtakeTime') ? document.getElementById('outtakeTime').value = new Date() : "";

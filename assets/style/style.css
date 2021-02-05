@@ -226,6 +226,29 @@ th, td {
     display: flex;
 }
 
+.form-edit-device {
+    grid-gap: 1rem;
+}
+
+.form-edit-device input {
+    display: flex;
+}
+
 .add-compontent {
     padding: 1rem 3rem;
+}
+
+.print-btn{
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+@media print {
+    nav, header.top-bar, .print-btn{
+        display: none;
+    }
+}
+
+.w-100{
+    width: 100%;
 }
