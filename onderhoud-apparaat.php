@@ -15,22 +15,22 @@ if (!$device) {
     <form method="post" class="d-grid form-edit-device">
 
         <div><label for="deviceName">Naam</label>
-            <input id="deviceName" type="text" name="deviceName" value="<?= $device['Naam'] ?>">
+            <input id="deviceName" type="text" name="deviceName" value="<?= $device['Naam'] ?>" required>
         </div>
 
         <div>
             <label for="deviceDescription">Omschrijvijng</label>
-            <input id="deviceDescription" type="text" name="deviceDescription" value="<?= $device['Omschrijving'] ?>">
+            <input id="deviceDescription" type="text" name="deviceDescription" value="<?= $device['Omschrijving'] ?>" required>
         </div>
 
         <div>
             <label for="devicePrice">Vergoeding</label>
-            <input id="devicePrice" type="number" step="0.01" name="devicePrice" value="<?= $device['Vergoeding'] ?>">
+            <input id="devicePrice" type="number" step="0.01" name="devicePrice" value="<?= $device['Vergoeding'] ?>" required>
         </div>
 
         <div>
             <label for="deviceStock">Gewicht Gram</label>
-            <input id="deviceStock" type="number" step="0.01" name="deviceStock" value="<?= $device['GewichtGram'] ?>">
+            <input id="deviceStock" type="number" step="0.01" name="deviceStock" value="<?= $device['GewichtGram'] ?>" required>
         </div>
 
         <div>
@@ -45,17 +45,15 @@ if (!$device) {
             <tr>
                 <th>Onderdeel</th>
                 <th>Gewicht %</th>
-                <th>Gewicht in gram</th>
                 <th>Verwijderen</th>
             </tr>
             </thead>
             <tbody>
 
             <?php
-            $stmt = $pdo->prepare("SELECT onderdeelapparaat.Apparaat_ID, onderdelen.ID, onderdeelapparaat.Percentage, onderdelen.Naam, apparaten.GewichtGram 
+            $stmt = $pdo->prepare("SELECT onderdeelapparaat.Apparaat_ID, onderdelen.ID, onderdeelapparaat.Percentage, onderdelen.Naam
                                             FROM onderdeelapparaat 
                                             INNER JOIN onderdelen ON onderdeelapparaat.Onderdeel_ID = onderdelen.ID
-                                            INNER JOIN apparaten ON onderdeelapparaat.Apparaat_ID = {$id}
                                             WHERE onderdeelapparaat.Apparaat_ID = {$id}
                                            ");
             $stmt->execute();
@@ -65,7 +63,6 @@ if (!$device) {
                 <tr>
                     <td><?= $compontent['Naam'] ?></td>
                     <td class="text-right"><?= $compontent['Percentage'] ?></td>
-                    <td class="text-right"><?= $compontent['GewichtGram'] ?></td>
                     <td class="text-right"><a
                                 href="onderhoud-apparaat-onderdeel-verwijderen.php?id=<?= $id ?>&componentId=<?= $compontent['ID'] ?>">Verwijderen</a>
                     </td>
