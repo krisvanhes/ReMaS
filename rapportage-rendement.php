@@ -12,34 +12,35 @@ $date = new DateTime();
     <table class="w-100">
         <thead>
         <tr>
-            <th>Uitbetaald deze maand</th>
-            <th>Uitbetaald totaal</th>
-            <th>Inkomsten</th>
+            <th>Apparaat</th>
+            <th>Uitbetaald</th>
             <th>Totale opbrengst</th>
         </tr>
         </thead>
         <?php
-        $thisMonth = $pdo->query("SELECT SUM(Vergoeding) FROM innameapparaat 
-                                    INNER JOIN apparaten ON innameapparaat.apparaat_ID = apparaten.ID
-                                    INNER JOIN innames ON innameapparaat.inname_ID = innames.ID
-                                    WHERE Datum > curdate() - interval 1 month
-                                    ")->fetch(PDO::FETCH_ASSOC);
 
-        $out = $pdo->query("SELECT SUM(Vergoeding) FROM innameapparaat 
-                                    INNER JOIN apparaten ON innameapparaat.apparaat_ID = apparaten.ID
-                                    INNER JOIN innames ON innameapparaat.inname_ID = innames.ID
-                                    ")->fetch(PDO::FETCH_ASSOC);
+        $devices = $pdo->query("SELECT apparaten.Naam, SUM(apparaten.Vergoeding) AS total FROM innameapparaat
+                                         INNER JOIN apparaten ON innameapparaat.Apparaat_ID = apparaten.ID
+                                         GROUP BY Apparaat_ID")->fetchAll();
 
-        $in = $pdo->query("SELECT SUM(Prijs) FROM uitgiftes")->fetch(PDO::FETCH_ASSOC);
+        $out = $pdo->query("SELECT SUM(Prijs) as Prijs FROM uitgiftes")->fetch();
 
-        $total = $in["SUM(Prijs)"] - $out["SUM(Vergoeding)"];
-        ?>
-        <tr>
-            <td>€<?= number_format($thisMonth["SUM(Vergoeding)"], '2', ',', '.') ?></td>
-            <td>€<?= number_format($out["SUM(Vergoeding)"], '2', ',', '.') ?></td>
-            <td>€<?= number_format($in["SUM(Prijs)"], '2', ',', '.') ?></td>
-            <td>€<?= number_format($total, '2', ',', '.') ?></td>
-        </tr>
+        $totalDevices = 0;
+        foreach ($devices as $device) {
+            $totalDevices += $device['total'];
+            ?>
+            <tr>
+                <td><?= $device['Naam'] ?></td>
+                <td>€<?= number_format($device['total'], '2', ',', '.') ?></td>
+                <td></td>
+            </tr>
+
+        <?php } ?>
+
+            <tr>
+                <td>Totaal</td>
+                <td>€<?= number_format($totalDevices, '2', ',', '.') ?></td>
+                <td>€<?= number_format($out['Prijs'], '2', ',', '.') ?></td>
+            </tr>
     </table>
-
 <?php include 'includes/footer.php'; ?>
