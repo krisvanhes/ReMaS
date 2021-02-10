@@ -252,3 +252,11 @@ th, td {
 .w-100{
     width: 100%;
 }
+
+.edit{
+    color: #4385ff;
+}
+
+.delete{
+    color: #aa0011;
+}
