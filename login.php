@@ -76,6 +76,9 @@ if (isset($_SESSION['loggedin'])) {
                             redirect_to('login.php');
                         }
                     }
+                } else {
+                    $_SESSION['error'] = "De gebruiker/het wachtwoord klopt niet";
+                    redirect_to('login.php');
                 }
             }
             unset($stmt);
