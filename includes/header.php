@@ -14,6 +14,7 @@ if (!isset($_SESSION['loggedin']) && (strpos($page, 'login') === false)) {
     <link rel="icon" type="image/png" href="assets/images/favicon.png"/>
     <link rel="stylesheet" href="assets/style/style.css">
     <title>ReMaS ~ Recycling Management System</title>
+    <script src="https://kit.fontawesome.com/60b2b86420.js" crossorigin="anonymous"></script>
 </head>
 <html>
 <body>
