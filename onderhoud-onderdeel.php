@@ -15,22 +15,22 @@ if (!$component) {
     <form method="post" class="d-grid form-edit-component" style="">
 
         <div><label for="componentName">Naam</label>
-            <input id="componentName" type="text" name="componentName" value="<?= $component['Naam'] ?>">
+            <input id="componentName" type="text" name="componentName" value="<?= $component['Naam'] ?>" required>
         </div>
 
         <div>
             <label for="componentDescription">Omschrijvijng</label>
-            <input id="componentDescription" type="text" name="componentDescription" value="<?= $component['Omschrijving'] ?>">
+            <input id="componentDescription" type="text" name="componentDescription" value="<?= $component['Omschrijving'] ?>" required>
         </div>
 
         <div>
             <label for="componentPrice">Prijs per kilogram</label>
-            <input id="componentPrice" type="number" step="0.01" name="componentPrice" value="<?= $component['PrijsPerKg'] ?>">
+            <input id="componentPrice" type="number" step="0.01" name="componentPrice" value="<?= $component['PrijsPerKg'] ?>" required>
         </div>
 
         <div>
             <label for="componentStock">Voorraad</label>
-            <input id="componentStock" type="number" step="0.01" name="componentStock" value="<?= $component['VoorraadKg'] ?>">
+            <input id="componentStock" type="number" step="0.01" name="componentStock" value="<?= $component['VoorraadKg'] ?>" required>
         </div>
 
         <div>

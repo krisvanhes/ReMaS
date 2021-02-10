@@ -5,23 +5,23 @@
     <form method="post" class="d-grid form-edit-component" style="">
 
         <div><label for="componentName">Naam</label>
-            <input id="componentName" type="text" name="componentName" placeholder="Ijzer Metaal etc">
+            <input id="componentName" type="text" name="componentName" placeholder="Ijzer Metaal etc" required>
         </div>
 
         <div>
             <label for="componentDescription">Omschrijvijng</label>
             <input id="componentDescription" type="text" name="componentDescription"
-                   placeholder="Dit is een omschrijving">
+                   placeholder="Dit is een omschrijving" required>
         </div>
 
         <div>
             <label for="componentPrice">Prijs per kilogram</label>
-            <input id="componentPrice" type="number" step="0.01" name="componentPrice" placeholder="0.00">
+            <input id="componentPrice" type="number" step="0.01" name="componentPrice" placeholder="0.00" required>
         </div>
 
         <div>
             <label for="componentStock">Voorraad</label>
-            <input id="componentStock" type="number" step="0.01" name="componentStock" placeholder="0.00">
+            <input id="componentStock" type="number" step="0.01" name="componentStock" placeholder="0.00" required>
         </div>
 
         <div>
