@@ -8,18 +8,18 @@ if ($role == 5 || $role == 6) { ?>
     <form method="post" class="d-grid form-edit-component" style="">
 
         <div><label for="employeeName">Naam</label>
-            <input class="w-100" id="employeeName" type="text" name="employeeName" placeholder="Albert Jacobs">
+            <input class="w-100" id="employeeName" type="text" name="employeeName" placeholder="Albert Jacobs" required>
         </div>
 
         <div>
             <label for="employeeEmail">Omschrijvijng</label>
             <input class="w-100" id="employeeEmail" type="text" name="employeeEmail"
-                   placeholder="albert@jacobs.com">
+                   placeholder="albert@jacobs.com" required>
         </div>
 
         <div>
             <label for="employeePassword">Wachtwoord</label>
-            <input class="w-100" id="employeePassword" type="password" name="employeePassword" placeholder="********">
+            <input class="w-100" id="employeePassword" type="password" name="employeePassword" placeholder="********" required>
         </div>
 
         <select name="employeeRole" id="employeeRole">
