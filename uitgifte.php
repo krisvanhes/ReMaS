@@ -47,7 +47,7 @@ if (isset($_POST['outtake'])) {
 
         $weight = $_POST['outtakeStock'];
 
-        $price = number_format(($weight / $compontent['PrijsPerKg']), 2, '.', '.');
+        $price = number_format(($weight * $compontent['PrijsPerKg']), 2, '.', '.');
 
         $data = [
             'employeeId' => $employeeId,
