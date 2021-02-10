@@ -6,6 +6,9 @@ if (isset($_SESSION['lastIntake'])) {
     $stmt->execute(['id' => $_SESSION['lastIntake']]);
     $intake = $stmt->fetch(PDO::FETCH_ASSOC);
     $date = new DateTime($intake['Datum']);
+
+    $dateSql = strtotime($intake['Datum']);
+    $date = date('d-m-y H:i', $dateSql);
     ?>
 
 
@@ -15,7 +18,7 @@ if (isset($_SESSION['lastIntake'])) {
 
     <h3>Superior Waste - ReMaS</h3>
     <h4>bon</h4>
-    <p><?= $date->format('d M Y H:m') ?></p>
+    <p><?= $date ?></p>
     <p>Medewerker: <?= $intake['Medewerker_ID'] ?></p>
     <p>Bonnummer: <?= $intake['ID'] ?></p>
 
